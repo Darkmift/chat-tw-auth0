@@ -1,18 +1,24 @@
 {
+  "name": "server",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "CommonJS",
-    "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "incremental": true,
-    "declaration": true,
-    "moduleResolution": "node",
-    "rootDir": "./src",
+    "composite": true,
+    "rootDir": "../..",
     "outDir": "./build",
-    "composite": true
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "#rootTypes/*": ["../../types/*"]
+    }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/types/request.d.ts",
+    "../../types/socket.type.ts"
+  ],
   "exclude": ["node_modules"]
 }

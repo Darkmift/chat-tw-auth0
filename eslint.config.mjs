@@ -6,6 +6,7 @@ import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin'
 import typescriptParser from '@typescript-eslint/parser'
 import prettierPlugin from 'eslint-plugin-prettier'
 import jest from 'eslint-plugin-jest'
+import reactHooks from 'eslint-plugin-react-hooks'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -13,7 +14,7 @@ const __dirname = dirname(__filename)
 export default [
   {
     files: ['**/*.{js,ts,tsx}'],
-    ignores: ['*/client/playwright.config.ts'],
+    ignores: ['*/client/playwright.config.ts', '*/client/.next/**'],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -35,6 +36,7 @@ export default [
       jest,
       '@typescript-eslint': typescriptEslintPlugin,
       prettier: prettierPlugin,
+      'react-hooks': reactHooks,
     },
     rules: {
       'no-unused-vars': 'error',
@@ -42,16 +44,20 @@ export default [
       ...js.configs.recommended.rules,
       ...typescriptEslintPlugin.configs.recommended.rules,
       ...prettierPlugin.configs.recommended.rules,
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
     },
   },
   {
     files: ['packages/client/**/*.{ts,tsx}'],
+    ignores: ['packages/client/playwright.config.ts', 'packages/client/.next/**'],
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
         project: ['./packages/client/tsconfig.json'],
         tsconfigRootDir: __dirname,
       },
+      
     },
   },
   {

@@ -6,5 +6,6 @@
   ],
   "env": {
     "jest": true
-  }
+  },
+  "ignores": ["node_modules", ".next"]
 }

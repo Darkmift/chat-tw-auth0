@@ -9,7 +9,7 @@
     "incremental": true,
     "declaration": true,
     "moduleResolution": "node",
-    "rootDir": "./src",
+    "rootDir": ".",
     "outDir": "./build"
   },
   "files": [],
@@ -21,6 +21,6 @@
       "path": "./packages/server"
     }
   ],
-  "include": ["packages/**/*.ts"],
+  "include": ["packages/**/*.ts", "types/**/*.ts"],
   "exclude": ["node_modules"]
 }
